@@ -10,15 +10,8 @@
   <meta property="og:type" content="website" />
   <title>GTA VI NZ Countdown</title>
 
-  <link rel="preload" href="display-extrabold.woff" as="font" type="font/woff" crossorigin />
+  <link rel="preload" href="display-condensed-bold.woff" as="font" type="font/woff" crossorigin />
   <style>
-    @font-face {
-      font-family: "Countdown Display";
-      src: url("display-extrabold.woff") format("woff");
-      font-weight: 800;
-      font-style: normal;
-      font-display: swap;
-    }
     @font-face {
       font-family: "Countdown Condensed";
       src: url("display-condensed-bold.woff") format("woff");
@@ -27,17 +20,9 @@
       font-display: swap;
     }
     :root {
-      --pink: #ff54bc;
-      --pink-2: #ff77ca;
-      --violet: #7d3cff;
-      --orange: #ff9c5a;
       --white: #fff8ff;
       --muted: #ead9ef;
-      --panel: rgba(31, 7, 39, 0.84);
-      --panel-2: rgba(18, 4, 25, 0.72);
-      --border: rgba(255, 113, 205, 0.88);
-      --shadow: 0 0 20px rgba(255, 74, 190, .42),
-                0 0 55px rgba(255, 74, 190, .18);
+      --pink: #ffc0e6;
     }
 
     * { box-sizing: border-box; }
@@ -116,203 +101,90 @@
         max(28px, env(safe-area-inset-bottom));
       display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: center;
+      gap: clamp(16px, 2vw, 28px);
       position: relative;
       z-index: 2;
     }
 
-    .badge {
-      align-self: flex-start;
-      display: inline-flex;
+    .brand {
+      display: block;
+      width: min(100%, clamp(228px, 24vw, 360px));
+      height: auto;
+      filter: drop-shadow(0 10px 20px rgba(10, 0, 19, .55));
+    }
+
+    .region {
+      display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 8px 13px;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 999px;
-      background: rgba(12, 2, 18, .42);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 8px 25px rgba(0,0,0,.22);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-weight: 800;
-      font-size: clamp(.72rem, 1.4vw, .9rem);
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      justify-content: center;
+      gap: 14px;
     }
 
     .flag {
-      width: 25px;
-      height: 16px;
-      object-fit: cover;
-      border-radius: 2px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,.18);
-    }
-
-    .brand {
-      display: flex;
-      align-items: baseline;
-      gap: .12em;
-      margin: 18px 0 2px;
-      font-family: "Countdown Display", system-ui, sans-serif;
-      font-weight: 800;
-      font-size: clamp(3.8rem, 9vw, 7.7rem);
-      line-height: 1;
-      letter-spacing: -.065em;
-      text-transform: uppercase;
-      text-shadow: 0 4px 0 rgba(0,0,0,.55);
-    }
-
-    .brand .vi {
       display: block;
       flex: none;
-      width: 1.04em;
-      height: .77em;
-      overflow: visible;
-      filter: drop-shadow(0 4px 0 rgba(0,0,0,.4));
+      width: 80px;
+      height: auto;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.32), 0 3px 12px rgba(0,0,0,.28);
     }
 
     h1 {
       font-family: "Countdown Condensed", system-ui, sans-serif;
       font-weight: 700;
-      margin: 22px 0 15px;
-      font-size: clamp(1.45rem, 3.1vw, 2.65rem);
-      line-height: .96;
-      letter-spacing: .035em;
+      margin: 0;
+      font-size: clamp(1.05rem, 1.8vw, 1.6rem);
+      line-height: 1.15;
+      letter-spacing: .07em;
       text-transform: uppercase;
       text-shadow: 0 3px 16px rgba(0,0,0,.55);
     }
 
     .countdown {
-      width: min(720px, 100%);
+      width: min(100%, 36rem);
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 0;
-      border-radius: 28px;
-      overflow: hidden;
-      border: 3px solid var(--border);
-      background:
-        linear-gradient(180deg, rgba(71, 22, 72, .88), rgba(29, 5, 38, .92));
-      box-shadow: var(--shadow), inset 0 0 22px rgba(255, 255, 255, .03);
-      backdrop-filter: blur(18px) saturate(1.2);
-      -webkit-backdrop-filter: blur(18px) saturate(1.2);
+      gap: clamp(6px, .85vw, 12px);
     }
 
     .unit {
-      position: relative;
-      text-align: center;
-      padding: clamp(18px, 3.4vw, 32px) 8px clamp(13px, 2.4vw, 20px);
       min-width: 0;
+      padding: clamp(12px, 1.8vw, 24px) 3px clamp(10px, 1.45vw, 19px);
+      border: 1px solid rgba(255, 171, 224, .32);
+      border-radius: clamp(10px, 1.3vw, 18px);
+      background: linear-gradient(160deg, rgba(92, 38, 88, .85), rgba(27, 10, 39, .96));
+      box-shadow: inset 0 1px rgba(255,255,255,.08), 0 8px 24px rgba(0,0,0,.25);
+      text-align: center;
     }
 
-    .unit:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      right: 0;
-      top: 22%;
-      height: 56%;
-      width: 1px;
-      background: rgba(255,255,255,.45);
-      box-shadow: 0 0 10px rgba(255,255,255,.15);
+    .unit:last-child {
+      border-color: rgba(255, 137, 207, .62);
+      color: var(--pink);
     }
 
     .num {
       display: block;
       font-family: "Countdown Condensed", system-ui, sans-serif;
       font-weight: 700;
-      font-size: clamp(2.6rem, 5vw, 5.3rem);
-      line-height: .9;
-      letter-spacing: .015em;
+      font-size: clamp(2.55rem, 5.15vw, 5.5rem);
+      line-height: .95;
       font-variant-numeric: tabular-nums;
-      text-shadow:
-        0 0 12px rgba(255, 255, 255, .23),
-        0 0 20px rgba(255, 76, 189, .22);
-      transform: translateZ(0);
-    }
-
-    .num.bump {
-      animation: bump .23s ease-out;
-    }
-
-    @keyframes bump {
-      0%   { transform: translateY(-5px) scale(1.035); filter: brightness(1.3); }
-      100% { transform: translateY(0) scale(1); filter: brightness(1); }
+      text-shadow: 0 0 18px rgba(255, 146, 216, .27);
     }
 
     .label {
       display: block;
-      margin-top: 11px;
-      color: #f7e7fa;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: clamp(.62rem, 1.2vw, .88rem);
-      font-weight: 900;
-      letter-spacing: .13em;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: clamp(.6rem, .83vw, .76rem);
+      font-weight: 800;
+      letter-spacing: .08em;
       text-transform: uppercase;
     }
 
-    .release {
-      margin-top: 20px;
-      display: inline-flex;
-      flex-direction: column;
-      gap: 4px;
-      align-items: flex-start;
-      text-transform: uppercase;
-      text-shadow: 0 3px 15px rgba(0,0,0,.75);
-    }
-
-    .release .small {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: clamp(.66rem, 1.2vw, .9rem);
-      font-weight: 900;
-      letter-spacing: .2em;
-      color: #f5e7f8;
-    }
-
-    .release .date {
-      font-family: "Countdown Condensed", system-ui, sans-serif;
-      font-weight: 700;
-      font-size: clamp(1.18rem, 2.5vw, 2rem);
-      line-height: 1.05;
-      color: var(--pink-2);
-    }
-
-    .status {
-      margin-top: 17px;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      font-size: .82rem;
-      font-weight: 750;
-      color: rgba(255,255,255,.82);
-    }
-
-    .pulse {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #ff62c5;
-      box-shadow: 0 0 0 0 rgba(255, 98, 197, .55);
-      animation: pulse 1.8s infinite;
-    }
-
-    @keyframes pulse {
-      70% { box-shadow: 0 0 0 10px rgba(255, 98, 197, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(255, 98, 197, 0); }
-    }
-
-    .released .countdown {
-      border-color: rgba(255,255,255,.88);
-      box-shadow:
-        0 0 25px rgba(255,255,255,.3),
-        0 0 65px rgba(255, 79, 188, .22);
-    }
-
-    .released .pulse {
-      background: #75ffb0;
-    }
-
-    .released .release .date {
-      color: #fff;
+    .released .unit {
+      border-color: rgba(255,255,255,.5);
     }
 
     @media (max-width: 860px) {
@@ -337,11 +209,11 @@
       }
 
       .brand {
-        font-size: clamp(3.2rem, 15vw, 6.2rem);
+        width: clamp(138px, 44vw, 246px);
       }
 
       .num {
-        font-size: clamp(2.6rem, 7.4vw, 5.3rem);
+        font-size: clamp(2.5rem, 11vw, 4.5rem);
       }
     }
 
@@ -352,31 +224,16 @@
         padding-bottom: max(20px, env(safe-area-inset-bottom));
       }
 
-      .countdown {
-        border-radius: 20px;
-        border-width: 2px;
+      .region {
+        gap: 12px;
       }
 
-      .unit {
-        padding-left: 4px;
-        padding-right: 4px;
+      .flag {
+        width: 66px;
       }
 
       .label {
-        letter-spacing: .07em;
-        font-size: .59rem;
-      }
-
-      h1 {
-        margin-top: 16px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .001ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
+        letter-spacing: .055em;
       }
     }
   </style>
@@ -386,40 +243,11 @@
   <main class="page" id="page">
     <div class="artwork" aria-hidden="true"></div>
     <section class="content" aria-labelledby="title">
-      <div class="badge">
-        <svg class="flag" viewBox="0 0 60 30" role="img" aria-label="New Zealand flag">
-          <rect width="60" height="30" fill="#012169"/>
-          <g transform="scale(.5)">
-            <path d="M0 0L60 30M60 0L0 30" stroke="#fff" stroke-width="6"/>
-            <path d="M0 0L60 30M60 0L0 30" stroke="#C8102E" stroke-width="3"/>
-            <path d="M30 0V30M0 15H60" stroke="#fff" stroke-width="10"/>
-            <path d="M30 0V30M0 15H60" stroke="#C8102E" stroke-width="6"/>
-          </g>
-          <g fill="#CC142B" stroke="#fff" stroke-width=".7">
-            <path d="M42 5l1.2 2.4 2.6.4-1.9 1.8.5 2.6-2.4-1.2-2.4 1.2.5-2.6-1.9-1.8 2.6-.4z"/>
-            <path d="M51 11l1.1 2.2 2.4.4-1.8 1.7.4 2.4-2.1-1.1-2.2 1.1.4-2.4-1.7-1.7 2.4-.4z"/>
-            <path d="M44 20l1.1 2.2 2.4.4-1.8 1.7.4 2.4-2.1-1.1-2.2 1.1.4-2.4-1.7-1.7 2.4-.4z"/>
-            <path d="M53 22l.9 1.8 2 .3-1.4 1.4.3 2-1.8-.9-1.8.9.4-2-1.5-1.4 2-.3z"/>
-          </g>
-        </svg>
-        New Zealand release
+      <img class="brand" src="gta-vi-logo.png" width="880" height="681" alt="Grand Theft Auto VI" />
+      <div class="region">
+        <img class="flag" src="new-zealand-flag.svg" width="80" height="40" alt="" />
+        <h1 id="title">New Zealand countdown</h1>
       </div>
-
-      <div class="brand" aria-hidden="true">
-        <span>GTA</span>
-        <svg class="vi" viewBox="0 0 120 100" focusable="false">
-          <defs>
-            <linearGradient id="vi-colour" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#a16aff" />
-              <stop offset=".52" stop-color="#ff54bc" />
-              <stop offset="1" stop-color="#ffa454" />
-            </linearGradient>
-          </defs>
-          <path fill="url(#vi-colour)" d="M0 0h26l21 66L68 0h26L59 100H35zM100 0h20v100h-20z" />
-        </svg>
-      </div>
-
-      <h1 id="title">New Zealand Release Countdown</h1>
 
       <div class="countdown" role="timer" aria-live="off" aria-label="Time remaining until GTA VI releases in New Zealand">
         <div class="unit">
@@ -439,16 +267,6 @@
           <span class="label">Seconds</span>
         </div>
       </div>
-
-      <div class="release">
-        <span class="small" id="releaseLabel">Releases in New Zealand</span>
-        <span class="date">12:00 AM NZDT, Thursday, 19 November 2026</span>
-      </div>
-
-      <div class="status">
-        <span class="pulse"></span>
-        <span id="statusText">Live countdown · updates every second</span>
-      </div>
     </section>
   </main>
 
@@ -459,8 +277,7 @@
     const RELEASE_AT = Date.parse("2026-11-19T00:00:00+13:00");
 
     const page = document.getElementById("page");
-    const statusText = document.getElementById("statusText");
-    const releaseLabel = document.getElementById("releaseLabel");
+    const heading = document.getElementById("title");
 
     const nodes = {
       days: document.getElementById("days"),
@@ -469,42 +286,25 @@
       seconds: document.getElementById("seconds"),
     };
 
-    const previous = { days: null, hours: null, minutes: null, seconds: null };
-
     function pad2(value) {
       return String(value).padStart(2, "0");
     }
 
     function updateNumber(name, value) {
-      const text = name === "days" ? String(value) : pad2(value);
+      const text = pad2(value);
       const node = nodes[name];
 
       if (node.textContent !== text) {
         node.textContent = text;
-
-        if (previous[name] !== null) {
-          node.classList.remove("bump");
-          void node.offsetWidth;
-          node.classList.add("bump");
-        }
-
-        previous[name] = value;
       }
     }
 
     function render() {
-      const now = Date.now();
-      let remaining = RELEASE_AT - now;
-
-      const complete = remaining <= 0;
-      remaining = Math.max(0, remaining);
+      const remaining = Math.max(0, RELEASE_AT - Date.now());
+      const complete = remaining === 0;
       page.classList.toggle("released", complete);
-      statusText.textContent = complete
-        ? "Countdown complete"
-        : "Live countdown · updates every second";
-      releaseLabel.textContent = complete
-        ? "19 November 2026 has arrived"
-        : "Releases in New Zealand";
+      const headingText = complete ? "Countdown complete" : "New Zealand countdown";
+      if (heading.textContent !== headingText) heading.textContent = headingText;
 
       const totalSeconds = Math.ceil(remaining / 1000);
       const days = Math.floor(totalSeconds / 86400);
